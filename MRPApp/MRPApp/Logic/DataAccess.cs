@@ -30,5 +30,15 @@ namespace MRPApp.Logic
                 return ctx.SaveChanges(); //COMMIT
             }
         }
+
+        internal static int DelSetting(Settings item)
+        {
+            using (var ctx = new MRPEntities())
+            {
+                var obj = ctx.Settings.Find(item.BasicCode);//DB안에서 데이터를 찾아야 삭제할 수 있음(BasicCode를 통해=>PK이기 때문에)
+                ctx.Settings.Remove(obj); //DB데이터를 삭제하는 과정
+                return ctx.SaveChanges();
+            }
+        }
     }
 }
