@@ -14,14 +14,14 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Input;
 
-namespace MRPApp.View.Setting
+namespace MRPApp.View.Schedule
 {
     /// <summary>
     /// MyAccount.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class SettingList : Page
+    public partial class ScheduleList : Page
     {
-        public SettingList()
+        public ScheduleList()
         {
             InitializeComponent();
         }
@@ -41,7 +41,7 @@ namespace MRPApp.View.Setting
         }
         private void InitErrorMessages()
         {
-            LblBasicCode.Visibility = LblCodeDesc.Visibility = LblCodeName.Visibility = Visibility.Hidden;
+            //LblBasicCode.Visibility = LblCodeDesc.Visibility = LblCodeName.Visibility = Visibility.Hidden;
 
         }
         private void LoadGridData()
@@ -58,11 +58,11 @@ namespace MRPApp.View.Setting
             if (IsValidInputs() != true) return;
 
             var setting = new Model.Settings();
-            setting.BasicCode = TxtBasicCode.Text;
-            setting.CodeName = TxtCodeName.Text;
-            setting.CodeDesc = TxtCodeDesc.Text;
-            setting.RegDate = DateTime.Now;
-            setting.RegID = "MRP";
+            //setting.BasicCode = TxtBasicCode.Text;
+            //setting.CodeName = TxtCodeName.Text;
+            //setting.CodeDesc = TxtCodeDesc.Text;
+            //setting.RegDate = DateTime.Now;
+            //setting.RegID = "MRP";
             try
             {
                 var result = Logic.DataAccess.SetSettings(setting);
@@ -90,24 +90,24 @@ namespace MRPApp.View.Setting
             var isValid = true;
             InitErrorMessages();
 
-            if(string.IsNullOrEmpty(TxtBasicCode.Text))
-            {
-                LblBasicCode.Visibility = Visibility.Visible;
-                LblBasicCode.Text = "코드를 입력하세요";
-                isValid = false;
-            }
-            else if (Logic.DataAccess.GetSettings().Where(s=>s.BasicCode.Equals(TxtBasicCode.Text)).Count()>0)
-            {
-                LblBasicCode.Visibility = Visibility.Visible;
-                LblBasicCode.Text = "중복코드가 존재합니다.";
-                isValid = false;
-            }
-            if (string.IsNullOrEmpty(TxtCodeName.Text))
-            {
-                LblCodeName.Visibility = Visibility.Visible;
-                LblCodeName.Text = "코드명을 입력하세요";
-                isValid = false;
-            }
+            //if(string.IsNullOrEmpty(TxtBasicCode.Text))
+            //{
+            //    LblBasicCode.Visibility = Visibility.Visible;
+            //    LblBasicCode.Text = "코드를 입력하세요";
+            //    isValid = false;
+            //}
+            //else if (Logic.DataAccess.GetSettings().Where(s=>s.BasicCode.Equals(TxtBasicCode.Text)).Count()>0)
+            //{
+            //    LblBasicCode.Visibility = Visibility.Visible;
+            //    LblBasicCode.Text = "중복코드가 존재합니다.";
+            //    isValid = false;
+            //}
+            //if (string.IsNullOrEmpty(TxtCodeName.Text))
+            //{
+            //    LblCodeName.Visibility = Visibility.Visible;
+            //    LblCodeName.Text = "코드명을 입력하세요";
+            //    isValid = false;
+            //}
            
             return isValid;
 
@@ -127,27 +127,27 @@ namespace MRPApp.View.Setting
 
             //}
 
-            var setting = GrdData.SelectedItem as Model.Settings;
-            setting.CodeName = TxtCodeName.Text;
-            setting.CodeDesc = TxtCodeDesc.Text;
-            setting.ModDate = DateTime.Now;
-            setting.ModID = "MRP";
+            //var setting = GrdData.SelectedItem as Model.Settings;
+            //setting.CodeName = TxtCodeName.Text;
+            //setting.CodeDesc = TxtCodeDesc.Text;
+            //setting.ModDate = DateTime.Now;
+            //setting.ModID = "MRP";
 
             try
             {
-                var result = Logic.DataAccess.SetSettings(setting);
-                if (result == 0)
-                {
-                    Commons.LOGGER.Error("데이터 수정시 오류 발생");
-                    Commons.ShowMessageAsync("오류", "데이터 수정실패!!");
-                }
-                else
-                {
-                    Commons.LOGGER.Info($"데이터 수정 성공 : {setting.BasicCode}");
-                    ClearInputs();
-                    LoadGridData();//수정된 값 다시 불러오는 역할
+                //var result = Logic.DataAccess.SetSettings(setting);
+                //if (result == 0)
+                //{
+                //    Commons.LOGGER.Error("데이터 수정시 오류 발생");
+                //    Commons.ShowMessageAsync("오류", "데이터 수정실패!!");
+                //}
+                //else
+                //{
+                //    Commons.LOGGER.Info($"데이터 수정 성공 : {setting.BasicCode}");
+                //    ClearInputs();
+                //    LoadGridData();//수정된 값 다시 불러오는 역할
                     
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -156,23 +156,23 @@ namespace MRPApp.View.Setting
         }
         private void ClearInputs()
         {
-            TxtBasicCode.IsReadOnly = false;
-            TxtBasicCode.Background = new SolidColorBrush(Colors.White);
-            TxtBasicCode.Text = TxtCodeDesc.Text = TxtCodeName.Text = string.Empty;//""
-            TxtBasicCode.Focus();
+            //TxtBasicCode.IsReadOnly = false;
+            //TxtBasicCode.Background = new SolidColorBrush(Colors.White);
+            //TxtBasicCode.Text = TxtCodeDesc.Text = TxtCodeName.Text = string.Empty;//""
+            //TxtBasicCode.Focus();
         }
 
         private void GrdData_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             try
             {
-                var setting = GrdData.SelectedItem as Model.Settings;
-                TxtBasicCode.Text = setting.BasicCode;
-                TxtCodeDesc.Text = setting.CodeDesc;
-                TxtCodeName.Text = setting.CodeName;
+                //var setting = GrdData.SelectedItem as Model.Settings;
+                //TxtBasicCode.Text = setting.BasicCode;
+                //TxtCodeDesc.Text = setting.CodeDesc;
+                //TxtCodeName.Text = setting.CodeName;
 
-                TxtBasicCode.IsReadOnly = true;
-                TxtBasicCode.Background = new SolidColorBrush(Colors.LightGray);
+                //TxtBasicCode.IsReadOnly = true;
+                //TxtBasicCode.Background = new SolidColorBrush(Colors.LightGray);
             }
             catch (Exception ex)
             {

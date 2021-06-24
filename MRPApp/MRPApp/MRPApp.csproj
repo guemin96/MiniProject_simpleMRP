@@ -234,6 +234,9 @@
     <Compile Include="Model\Settings.cs">
       <DependentUpon>MRPModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\Schedule\ScheduleList.xaml.cs">
+      <DependentUpon>ScheduleList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Store\AddStore.xaml.cs">
       <DependentUpon>AddStore.xaml</DependentUpon>
     </Compile>
@@ -262,6 +265,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Schedule\ScheduleList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\Store\AddStore.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -325,7 +332,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\Process\" />
-    <Folder Include="View\Schedule\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

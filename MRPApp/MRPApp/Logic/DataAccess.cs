@@ -11,7 +11,7 @@ namespace MRPApp.Logic
     public class DataAccess
     {
         //셋팅 테이블에서 데이터 가져오기
-        internal static List<Settings> GetSettings()
+        public static List<Settings> GetSettings()
         {
             List<Model.Settings> settings;
             using (var ctx = new MRPEntities()) // ctx에 MRP데이터를 넣는 행동 , new MRPEntities를 사용함으로써 커넥션 커맨드 파라미터 역할을 해줌
@@ -22,7 +22,7 @@ namespace MRPApp.Logic
 
         }
 
-        internal static int SetSettings(Settings item)
+        public static int SetSettings(Settings item)
         {
             using (var ctx = new MRPEntities())
             {
@@ -31,7 +31,7 @@ namespace MRPApp.Logic
             }
         }
 
-        internal static int DelSetting(Settings item)
+        public static int DelSetting(Settings item)
         {
             using (var ctx = new MRPEntities())
             {
