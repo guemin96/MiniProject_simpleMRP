@@ -210,6 +210,30 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Logic\DataAccess.cs" />
+    <Compile Include="Model\MRPModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MRPModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MRPModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MRPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MRPModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MRPModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Process.cs">
+      <DependentUpon>MRPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Schedules.cs">
+      <DependentUpon>MRPModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Settings.cs">
+      <DependentUpon>MRPModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="View\Store\AddStore.xaml.cs">
       <DependentUpon>AddStore.xaml</DependentUpon>
     </Compile>
@@ -277,6 +301,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\MRPModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MRPModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\MRPModel.edmx.diagram">
+      <DependentUpon>MRPModel.edmx</DependentUpon>
+    </None>
     <None Include="NanumGothic.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -293,7 +324,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="View\Process\" />
     <Folder Include="View\Schedule\" />
   </ItemGroup>
@@ -456,6 +486,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\factory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\MRPModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MRPModel.Context.cs</LastGenOutput>
+      <DependentUpon>MRPModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\MRPModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MRPModel.edmx</DependentUpon>
+      <LastGenOutput>MRPModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

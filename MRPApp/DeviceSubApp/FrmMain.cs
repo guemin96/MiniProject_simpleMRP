@@ -77,14 +77,21 @@ namespace DeviceSubApp
                 using (var conn = new SqlConnection(connectionString))
                 {
                     var prcResult = correctData["PRC_MSG"] == "OK" ? 1 : 0;
-                    string strUpQry = $"UPDATE Process_DEV " +
-                                      $"     SET PrcEndTime = '{DateTime.Now.ToString("HH:mm:ss")}' " +
-                                      $"       , PrcResult = '{prcResult}' " +
-                                      $"       , ModDate = '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}' " +
-                                      $"       , ModID = '{"SYS"}' " +
-                                      $"WHERE PrcIdx = " +
-                                      $"(SELECT TOP 1 PrcIdx FROM Process_DEV ORDER BY PrcIdx DESC)";
+                    /*string strUpQry = $@"UPDATE Process_DEV 
+                                          SET PrcEndTime = '{DateTime.Now.ToString("HH:mm:ss")}' 
+                                            , PrcResult = '{prcResult}' 
+                                            , ModDate = '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}' 
+                                             , ModID = '{"SYS"}' 
+                                      WHERE PrcIdx = 
+                                      (SELECT TOP 1 PrcIdx FROM Process_DEV ORDER BY PrcIdx DESC)";*/
 
+                    string strUpQry = $@"UPDATE Process_DEV
+                                           SET PrcEndTime = '{ DateTime.Now.ToString("HH:mm:ss") }'
+                                              , PrcResult = '{ prcResult }'
+                                              , ModDate = '{ DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }'
+                                              , ModID = '{ "SYS" }'
+                                         WHERE PrcIdx = (SELECT Top 1 PrcIdx FROM Process_DEV
+                                                         order by PrcIdx desc)";
                     try
                     {
                         conn.Open();
