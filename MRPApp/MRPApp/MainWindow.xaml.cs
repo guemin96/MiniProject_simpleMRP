@@ -42,6 +42,7 @@ namespace MRPApp
         private void MetroWindow_Activated(object sender, EventArgs e)
         {
             Commons.PLANTCODE = ConfigurationManager.AppSettings.Get("PlantCode");
+            Commons.FACILITYID = ConfigurationManager.AppSettings.Get("FacilityID");
             try
             {
                 var plantName = Logic.DataAccess.GetSettings().Where(c => c.BasicCode.Equals(Commons.PLANTCODE)).FirstOrDefault().CodeName;

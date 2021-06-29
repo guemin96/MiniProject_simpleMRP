@@ -17,6 +17,8 @@ namespace MRPApp
         // 현재 애플리케이션 공장코드
         public static string PLANTCODE = string.Empty;
 
+        public static string FACILITYID = string.Empty;
+
         /// <summary>
         /// MD5 암호화처리 메서드
         /// </summary>
