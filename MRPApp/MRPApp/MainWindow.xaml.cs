@@ -21,6 +21,7 @@ using MRPApp.View.Setting;
 using MRPApp.View.Schedule;
 using System.Configuration;
 using MRPApp.View.Process;
+using MRPApp.View.Report;
 
 namespace MRPApp
 {
@@ -36,7 +37,7 @@ namespace MRPApp
 
         private void MetroWindow_ContentRendered(object sender, EventArgs e)
         {
-            ShowLoginView();
+
         }
 
         private void MetroWindow_Activated(object sender, EventArgs e)
@@ -53,50 +54,6 @@ namespace MRPApp
                 Commons.LOGGER.Error($"예외발생 : {ex}");
             }
         }
-private void ShowLoginView()
-        {
-
-        }
-
-        private async void BtnAccount_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                ActiveControl.Content = new MyAccount();
-            }
-            catch (Exception ex)
-            {
-                Commons.LOGGER.Error($"예외발생 BtnAccount_Click : {ex}");
-                await this.ShowMessageAsync("예외", $"예외발생 : {ex}");
-            }
-        }
-
-        private async void BtnUser_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                //ActiveControl.Content = new UserList();
-            }
-            catch (Exception ex)
-            {
-                Commons.LOGGER.Error($"예외발생 BtnUser_Click : {ex}");
-                await this.ShowMessageAsync("예외", $"예외발생 : {ex}");
-            }
-        }
-
-        private void BtnStore_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                ActiveControl.Content = new StoreList();
-            }
-            catch (Exception ex)
-            {
-                Commons.LOGGER.Error($"예외발생 BtnStore_Click : {ex}");
-                this.ShowMessageAsync("예외", $"예외발생 : {ex}");
-            }
-        }
-
         private async void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             var result = await this.ShowMessageAsync("종료", "프로그램을 종료하시겠습니까?", 
@@ -142,7 +99,20 @@ private void ShowLoginView()
             }
             catch (Exception ex)
             {
-                Commons.LOGGER.Error($"예외발생 BtnSchedule_Click : {ex}");
+                Commons.LOGGER.Error($"예외발생 BtnMonitoring_Click : {ex}");
+                this.ShowMessageAsync("예외", $"예외발생 : {ex}");
+            }
+        }
+
+        private void BtnReport_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ActiveControl.Content = new ReportView();
+            }
+            catch (Exception ex)
+            {
+                Commons.LOGGER.Error($"예외발생 BtnReport_Click : {ex}");
                 this.ShowMessageAsync("예외", $"예외발생 : {ex}");
             }
         }
