@@ -72,7 +72,7 @@ namespace DeviceSubApp
         {
             if (iotData.Count > 0)
             {
-                var correctData = iotData[iotData.Count - 1];
+                var correctData = iotData[iotData.Count - 1];// 제일 마지막 데이터를 correctData 변수에 넣어줌
                 // DB에 입력
                 //UpdateText("DB 처리");
                 using (var conn = new SqlConnection(connectionString))
@@ -163,7 +163,7 @@ namespace DeviceSubApp
 
         private void UpdateText(string message)
         {
-            if (RtbSubscr.InvokeRequired)
+            if (RtbSubscr.InvokeRequired) //invoke= 호출(스레드가 겹치면서 오류가 날 수 있는데 이걸 막기 위해서 사용해주는 것으로 생각됨)
             {
                 UpdateTextCallback callback = new UpdateTextCallback(UpdateText);
                 this.Invoke(callback, new object[] { message });
